@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------------------
-# Copyright (c) 2020 by Enclustra GmbH, Switzerland.
+# Copyright (c) 2021 by Enclustra GmbH, Switzerland.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy of
 # this hardware, software, firmware, and associated documentation files (the
@@ -22,7 +22,7 @@
 # Project settings for Mercury XU6 Reference Design
 # Valid module codes
 # ME-XU6-2CG-1E-D10H
-# ME-XU6-2EG-1E-D13
+# ME-XU6-2EG-1I-D13E
 # ME-XU6-3EG-2I-D11
 # ME-XU6-4CG-1E-D12
 # ME-XU6-4EV-1I-D12
@@ -49,9 +49,9 @@ switch $module_name {
     set PS_DDR PS_D10H
     set Video_Codec None
   }
-  ME-XU6-2EG-1E-D13 {
-    set part xczu2eg-sfvc784-1-e 
-    set PS_DDR PS_D13
+  ME-XU6-2EG-1I-D13E {
+    set part xczu2eg-sfvc784-1-i 
+    set PS_DDR PS_D13E
     set Video_Codec None
   }
   ME-XU6-3EG-2I-D11 {

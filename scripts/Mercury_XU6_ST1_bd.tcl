@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------------------
-# Copyright (c) 2020 by Enclustra GmbH, Switzerland.
+# Copyright (c) 2021 by Enclustra GmbH, Switzerland.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy of
 # this hardware, software, firmware, and associated documentation files (the
@@ -133,7 +133,7 @@ if { $PS_DDR == "PS_D12"} {
   ] [get_bd_cells zynq_ultra_ps_e]
 }
 
-if { $PS_DDR == "PS_D13"} {
+if { $PS_DDR == "PS_D13E"} {
   set_property -dict [ list \
     CONFIG.PSU__DDRC__SPEED_BIN {DDR4_2400T} \
     CONFIG.PSU__DDRC__CWL {12} \
@@ -141,7 +141,7 @@ if { $PS_DDR == "PS_D13"} {
     CONFIG.PSU__DDRC__DRAM_WIDTH {16 Bits} \
     CONFIG.PSU__DDRC__ROW_ADDR_COUNT {17} \
     CONFIG.PSU__DDRC__BG_ADDR_COUNT {1} \
-    CONFIG.PSU__DDRC__ECC {Disabled} \
+    CONFIG.PSU__DDRC__ECC {Enabled} \
     CONFIG.PSU__DDRC__PARITY_ENABLE {1} \
     CONFIG.PSU__DDRC__BUS_WIDTH {64 Bit} \
   ] [get_bd_cells zynq_ultra_ps_e]
