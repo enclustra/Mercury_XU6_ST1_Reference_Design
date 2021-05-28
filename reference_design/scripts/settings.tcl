@@ -47,32 +47,26 @@ switch $module_name {
   ME-XU6-2CG-1E-D10H {
     set part xczu2cg-sfvc784-1-e 
     set PS_DDR PS_D10H
-    set Video_Codec None
   }
   ME-XU6-2EG-1I-D13E {
     set part xczu2eg-sfvc784-1-i 
     set PS_DDR PS_D13E
-    set Video_Codec None
   }
   ME-XU6-3EG-2I-D11 {
     set part xczu3eg-sfvc784-2-i 
     set PS_DDR PS_D11
-    set Video_Codec None
   }
   ME-XU6-4CG-1E-D12 {
     set part xczu4cg-sfvc784-1-e 
     set PS_DDR PS_D12
-    set Video_Codec None
   }
   ME-XU6-4EV-1I-D12 {
     set part xczu4ev-sfvc784-1-i 
     set PS_DDR PS_D12
-    set Video_Codec VCU
   }
   ME-XU6-5EV-2I-D12E {
     set part xczu5ev-sfvc784-2-i 
     set PS_DDR PS_D12E
-    set Video_Codec VCU
   }
   default {
     puts "$module_name not available"

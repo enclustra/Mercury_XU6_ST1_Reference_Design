@@ -229,6 +229,10 @@ set_property -dict {PACKAGE_PIN H11   IOSTANDARD LVCMOS18  } [get_ports {HDMI_D2
 set_property -dict {PACKAGE_PIN AG8   IOSTANDARD LVCMOS18  } [get_ports {HDMI_CLK_N}]
 set_property -dict {PACKAGE_PIN AF8   IOSTANDARD LVCMOS18  } [get_ports {HDMI_CLK_P}]
 
+# I2C_PL
+set_property -dict {PACKAGE_PIN C7    IOSTANDARD LVCMOS18  } [get_ports {I2C_SCL_PL}]
+set_property -dict {PACKAGE_PIN D2    IOSTANDARD LVCMOS18  } [get_ports {I2C_SDA_PL}]
+
 # IO3
 set_property -dict {PACKAGE_PIN AE12  IOSTANDARD LVCMOS18  } [get_ports {IO3_D0_P}]
 set_property -dict {PACKAGE_PIN AF12  IOSTANDARD LVCMOS18  } [get_ports {IO3_D1_N}]

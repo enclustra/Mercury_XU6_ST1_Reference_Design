@@ -52,12 +52,15 @@ set_property -dict [ list \
   CONFIG.PSU__SD1__GRP_CD__ENABLE {1} \
   CONFIG.PSU__I2C0__PERIPHERAL__ENABLE {1} \
   CONFIG.PSU__I2C0__PERIPHERAL__IO {MIO 10 .. 11} \
+  CONFIG.PSU__I2C1__PERIPHERAL__ENABLE {1} \
+  CONFIG.PSU__I2C1__PERIPHERAL__IO {EMIO} \
   CONFIG.PSU__UART0__PERIPHERAL__ENABLE {1} \
   CONFIG.PSU__UART0__PERIPHERAL__IO {MIO 38 .. 39} \
   CONFIG.PSU__TTC0__PERIPHERAL__ENABLE {1} \
   CONFIG.PSU__ENET0__GRP_MDIO__ENABLE {1} \
   CONFIG.PSU__ENET0__PERIPHERAL__ENABLE {1} \
   CONFIG.PSU__USB0__PERIPHERAL__ENABLE {1} \
+  CONFIG.PSU__USB__RESET__MODE {Disable} \
   CONFIG.PSU__USB1__PERIPHERAL__ENABLE {1} \
   CONFIG.PSU__USB3_1__PERIPHERAL__ENABLE {1} \
   CONFIG.PSU__USB0__REF_CLK_SEL {Ref Clk2} \
@@ -147,10 +150,6 @@ if { $PS_DDR == "PS_D13E"} {
   ] [get_bd_cells zynq_ultra_ps_e]
 }
 
-if { $Video_Codec == "VCU"} {
-  create_bd_cell -type ip -vlnv xilinx.com:ip:vcu vcu_0
-}
-
 create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio:2.0 led
 set_property -dict [ list \
   CONFIG.C_GPIO_WIDTH {4} \
@@ -176,24 +175,8 @@ connect_bd_net [get_bd_pins ps_sys_rst/slowest_sync_clk] [get_bd_pins zynq_ultra
 connect_bd_net [get_bd_pins ps_sys_rst/peripheral_aresetn] [get_bd_pins system_management_wiz/s_axi_aresetn]
 connect_bd_net [get_bd_pins ps_sys_rst/ext_reset_in] [get_bd_pins zynq_ultra_ps_e/pl_resetn0]
 connect_bd_net [get_bd_pins ps_sys_rst/interconnect_aresetn] [get_bd_pins smartconnect_0/aresetn]
-
-if { $Video_Codec == "VCU"} {
-  apply_bd_automation -rule xilinx.com:bd_rule:vcu -config {mem_map "Zynq_Memory_Map" }  [get_bd_cells vcu_0]
-  set_property -dict [list CONFIG.NUM_MI {3}] [get_bd_cells smartconnect_0]
-  connect_bd_intf_net [get_bd_intf_pins smartconnect_0/M02_AXI] -boundary_type upper [get_bd_intf_pins vcu_axi_lite_0/S00_AXI]
-  create_bd_cell -type hier hier_VCU
-  move_bd_cells [get_bd_cells hier_VCU] [get_bd_cells vcu_0]
-  move_bd_cells [get_bd_cells hier_VCU] [get_bd_cells vcu_clk_wiz0]
-  move_bd_cells [get_bd_cells hier_VCU] [get_bd_cells vcu_interrupt]
-  move_bd_cells [get_bd_cells hier_VCU] [get_bd_cells proc_sys_reset_vcu_0]
-  move_bd_cells [get_bd_cells hier_VCU] [get_bd_cells proc_sys_reset_vcu_1]
-  move_bd_cells [get_bd_cells hier_VCU] [get_bd_cells vcu_axi_lite_0]
-  move_bd_cells [get_bd_cells hier_VCU] [get_bd_cells vcu_dec1_reg_slice]
-  move_bd_cells [get_bd_cells hier_VCU] [get_bd_cells vcu_mcu_reg_slice]
-  move_bd_cells [get_bd_cells hier_VCU] [get_bd_cells vcu_dec0_reg_slice]
-  move_bd_cells [get_bd_cells hier_VCU] [get_bd_cells vcu_enc0_reg_slice]
-  move_bd_cells [get_bd_cells hier_VCU] [get_bd_cells vcu_enc1_reg_slice]
-}
+set IIC_1 [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:iic_rtl:1.0 IIC_1 ]
+connect_bd_intf_net [get_bd_intf_ports IIC_1] [get_bd_intf_pins zynq_ultra_ps_e/IIC_1]
 connect_bd_intf_net [get_bd_intf_pins smartconnect_0/M01_AXI] [get_bd_intf_pins led/S_AXI]
 connect_bd_net [get_bd_pins led/s_axi_aclk] [get_bd_pins zynq_ultra_ps_e/pl_clk0]
 connect_bd_net [get_bd_pins led/s_axi_aresetn] [get_bd_pins ps_sys_rst/peripheral_aresetn]
