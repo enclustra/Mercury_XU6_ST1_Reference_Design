@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------------------
-# Copyright (c) 2021 by Enclustra GmbH, Switzerland.
+# Copyright (c) 2022 by Enclustra GmbH, Switzerland.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy of
 # this hardware, software, firmware, and associated documentation files (the
@@ -42,6 +42,7 @@ if {![info exists baseboard]}   {set baseboard ST1}
 if {[lindex $argv 0] != ""} { set module_name [lindex $argv 0] }
 
 set module Mercury_XU6
+set family zynqmp
 
 switch $module_name {
   ME-XU6-2CG-1E-D10H {
@@ -79,7 +80,6 @@ if {![info exists project_name]} {
   set project_name ${module}
   if {[info exists baseboard]} {
     lappend project_name ${baseboard}
-    puts $project_name
   }
   set project_name [string map {" " "_"} "${project_name}"]
 }
