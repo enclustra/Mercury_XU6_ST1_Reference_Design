@@ -1,5 +1,5 @@
-# ----------------------------------------------------------------------------------
-# Copyright (c) 2022 by Enclustra GmbH, Switzerland.
+# ----------------------------------------------------------------------------------------------------
+# Copyright (c) 2024 by Enclustra GmbH, Switzerland.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy of
 # this hardware, software, firmware, and associated documentation files (the
@@ -17,7 +17,7 @@
 # HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 # PRODUCT OR THE USE OR OTHER DEALINGS IN THE PRODUCT.
-# ----------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------------------
 
 set_property BITSTREAM.CONFIG.OVERTEMPSHUTDOWN ENABLE [current_design]
  
@@ -81,23 +81,23 @@ set_property -dict {PACKAGE_PIN AH2   IOSTANDARD LVCMOS18  } [get_ports {IO1_D20
 set_property -dict {PACKAGE_PIN AH1   IOSTANDARD LVCMOS18  } [get_ports {IO1_D21_N}]
 set_property -dict {PACKAGE_PIN AF1   IOSTANDARD LVCMOS18  } [get_ports {IO1_D22_P}]
 set_property -dict {PACKAGE_PIN AG1   IOSTANDARD LVCMOS18  } [get_ports {IO1_D23_N}]
-set_property -dict {PACKAGE_PIN AC3   IOSTANDARD LVCMOS18  } [get_ports {IO1_CLK1_N}]
-set_property -dict {PACKAGE_PIN AC4   IOSTANDARD LVCMOS18  } [get_ports {IO1_CLK0_P}]
+set_property -dict {PACKAGE_PIN AC3   IOSTANDARD LVCMOS18  } [get_ports {IO1_CLK_N}]
+set_property -dict {PACKAGE_PIN AC4   IOSTANDARD LVCMOS18  } [get_ports {IO1_CLK_P}]
 
 # BUTTONS
 set_property -dict {PACKAGE_PIN AA11  IOSTANDARD LVCMOS18  } [get_ports {BTN1_N}]
 
 # Optional reference oscillator
-set_property -dict {PACKAGE_PIN D14   IOSTANDARD LVCMOS18  } [get_ports {CLK_REF_N}]
-set_property -dict {PACKAGE_PIN D15   IOSTANDARD LVCMOS18  } [get_ports {CLK_REF_P}]
+set_property -dict {PACKAGE_PIN D14   IOSTANDARD DIFF_SSTL18_I} [get_ports {CLK_REF_N}]
+set_property -dict {PACKAGE_PIN D15   IOSTANDARD DIFF_SSTL18_I} [get_ports {CLK_REF_P}]
 
 # Clock Generator CLK2
-set_property -dict {PACKAGE_PIN E15   IOSTANDARD LVCMOS18  } [get_ports {CLK_REF1_N}]
-set_property -dict {PACKAGE_PIN F15   IOSTANDARD LVCMOS18  } [get_ports {CLK_REF1_P}]
+set_property -dict {PACKAGE_PIN E15   IOSTANDARD DIFF_SSTL18_I} [get_ports {CLK_REF1_N}]
+set_property -dict {PACKAGE_PIN F15   IOSTANDARD DIFF_SSTL18_I} [get_ports {CLK_REF1_P}]
 
 # Clock Generator CLK3
-set_property -dict {PACKAGE_PIN E13   IOSTANDARD LVCMOS18  } [get_ports {CLK_REF2_N}]
-set_property -dict {PACKAGE_PIN E14   IOSTANDARD LVCMOS18  } [get_ports {CLK_REF2_P}]
+set_property -dict {PACKAGE_PIN E13   IOSTANDARD DIFF_SSTL18_I} [get_ports {CLK_REF2_N}]
+set_property -dict {PACKAGE_PIN E14   IOSTANDARD DIFF_SSTL18_I} [get_ports {CLK_REF2_P}]
 
 # Clock Generator CLK0
 set_property -dict {PACKAGE_PIN AC13  IOSTANDARD DIFF_SSTL18_I} [get_ports {CLK_USR_N}]
